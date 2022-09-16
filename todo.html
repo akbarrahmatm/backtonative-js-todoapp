@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ToDoApp | @backtonative</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <script>
+
+    </script>
+    <div class="container">
+
+        <div class="navbar">
+            <div class="brand">
+                <h1 class="brand-name flex-center">TodoApp</h1>
+                <p class="brand-desc flex-center">Back To Native</p>
+            </div>
+        </div>
+        <div class="content">
+            <div class="greet">
+                <p>Hola👋, selamat berproduktivitas.</p>
+            </div>
+            <div class="content-item">
+
+                <div class="form">
+                    <input type="text" name="kegiatan" id="kegiatan" placeholder="masukkan kegiatanmu" autofocus
+                        required autocomplete="off">
+                    <button type="button" class="button" style="width: fit-content; display: block; margin-top: 5px;"
+                        onclick="addActivity()">Simpan</button>
+                </div>
+                <div class="list">
+
+                    <ul id="list-group">
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer">
+            <div class="footer-content">
+                <p>Created with ❤️ by <a href="">@akbarrahmatm</a></p>
+                <p>Pure Native, As Pure As My Love To You 💀.</p>
+            </div>
+        </div>
+    </div>
+    <script>
+        let data
+        if (localStorage.getItem('data') == null) {
+            data = [];
+        } else {
+            data = JSON.parse(localStorage.getItem('data'));
+        }
+
+        if (data.length > 0) {
+            getActivity()
+        } else {
+            let span = document.createElement("span")
+            text = document.createTextNode('Belum ada aktivitas')
+            span.appendChild(text)
+
+            document.getElementById("list-group").appendChild(span)
+        }
+
+        enterInput()
+
+        function enterInput() {
+            var input = document.getElementById("kegiatan");
+            input.addEventListener("keypress", function (event) {
+                if (event.key === "Enter") {
+                    event.preventDefault();
+                    addActivity()
+                }
+            });
+        }
+
+
+        function getActivity() {
+            for (i = 0; i < data.length; i++) {
+                let li = document.createElement("li");
+                let div = document.createElement("div")
+                let span = document.createElement("span")
+
+                div.className = "inline-block"
+                li.className = "list-item"
+                // button done
+                let buttonDone = document.createElement("button")
+                buttonDone.innerText = "Done"
+                buttonDone.className = "button button-done"
+                buttonDone.setAttribute('onclick', 'doneActivity(' + i + ')')
+
+                // button delete
+                let buttonDelete = document.createElement("button")
+                buttonDelete.innerText = "Hapus"
+                buttonDelete.className = "button button-delete"
+                buttonDelete.setAttribute('onclick', 'deleteActivity(' + i + ') ')
+
+                // inject activity
+                let text
+                if (data[i].indexOf('//--') === -1) {
+                    text = document.createTextNode(data[i]);
+                    div.appendChild(buttonDone)
+                } else {
+                    text = document.createTextNode(data[i].replace('//--', ''));
+                    span.className = "done-activity"
+                }
+                span.appendChild(text)
+                li.appendChild(span);
+                div.appendChild(buttonDelete)
+                li.appendChild(div)
+
+                document.getElementById("list-group").appendChild(li);
+            }
+        }
+
+        function addActivity() {
+            let isAdd = confirm('yakin ingin menambah aktivitas?')
+
+            if (isAdd == true) {
+                let value = document.getElementById('kegiatan').value;
+                data.push(value)
+                localStorage.setItem('data', JSON.stringify(data));
+
+                document.location.reload()
+            }
+        }
+
+        function deleteActivity(id) {
+            let dataVal
+            if (data[id].indexOf('//--') === -1) {
+                dataVal = data[id]
+            } else {
+                dataVal = data[id].replace('//--', '')
+            }
+            let isDelete = confirm('yakin ingin menghapus aktivitas "' + dataVal + '" ?')
+
+
+            if (isDelete == true) {
+                if (id > -1) {
+                    data.splice(id, 1)
+
+                    localStorage.setItem('data', JSON.stringify(data))
+
+                    document.location.reload()
+                }
+            }
+        }
+
+        function doneActivity(id) {
+            let isDone = confirm('yakin ingin menyelesaikan aktivitas "' + data[id] + '" ?')
+
+            if (isDone == true) {
+                if (id > -1) {
+
+
+                    let value = "//--" + data[id]
+
+                    data[id] = value
+
+                    localStorage.setItem('data', JSON.stringify(data))
+
+                    document.location.reload()
+                }
+            }
+        }
+
+    </script>
+</body>
+
+</html>

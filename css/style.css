@@ -1,0 +1,137 @@
+@font-face {
+    font-family: 'Ubuntu';
+    src: url(../fonts/Ubuntu-Regular.ttf);
+}
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+.container{
+    min-height: 100vh;
+    background-color: white;
+}
+
+.navbar{
+    width: 100%;
+    min-height: 100%;
+    background-color: #AAC4FF;
+}
+
+.navbar .brand{
+    padding: 20px;
+    text-align: center;
+    height: 100%;
+}
+
+.flex-center{
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+    margin: auto;
+}
+
+.container .greet{
+    padding: 10px;
+    background-color: #D2DAFF;
+    text-align: center;
+}
+
+.content{
+    min-height: 65vh;
+}
+
+.content .content-item{
+    padding: 50px;
+}
+.content .content-item .form{
+    margin-bottom: 20px;
+}
+.content .content-item .form input[type=text] {
+    padding: 5px 10px;
+    border-radius: 10px;
+    font-size: 20px;
+    border: 0.5px solid gray;
+}
+.content .content-item .form button.submit{
+    padding: 5px 10px;
+    border-radius: 10px;
+    border: 1px solid gray;
+    font-size: 20px;
+    background-color: #AAC4FF;
+    color: black;
+    text-decoration: none;
+}
+.content .content-item .form input[type=submit] {
+    background-color: #AAC4FF;
+}
+.content .content-item .form input[type=submit]:hover {
+    background-color: #B1B2FF;
+    cursor: pointer;
+}
+
+.content .content-item .list{
+    padding: 20px;
+    background-color: #D2DAFF;
+    border-radius: 10px;
+}
+
+.inline-block{
+    display: block;
+}
+
+button.button-delete{
+    padding: 5px;
+    font-size: 14px;
+    background-color: red;
+    color: white;
+    border: 0;
+    margin-top: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.content .content-item .list .list-item{
+    margin: 10px 0px;
+}
+
+button.button-done{
+    padding: 5px;
+    font-size: 14px;
+    background-color: green;
+    color: white;
+    border: 0;
+    margin-top: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.content .content-item .list ul li{
+    margin-left: 20px;
+    background-color: aliceblue;
+    text-decoration: none;
+    list-style: none;
+    margin: 0;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.footer{
+    padding: 20px;
+    text-align: center;
+}
+
+span.done-activity{
+    text-decoration-line: line-through;
+}
+
+@media only screen and (max-width: 600px) {
+    .content .content-item .form{
+        margin-bottom: 10px;
+    }
+    .content .content-item{
+        padding: 10px;
+        
+    }
+}
