@@ -33,12 +33,12 @@
 }
 
 .container .greet{
-    padding: 10px;
-    background-color: #D2DAFF;
-    text-align: center;
+    padding: 10px; text-align: center;
 }
 
 .content{
+    width: 80%;
+    margin: auto;
     min-height: 65vh;
 }
 
@@ -116,6 +116,7 @@ button.button-done{
     margin: 0;
     padding: 10px;
     border-radius: 5px;
+    display: block;
 }
 
 .footer{
@@ -123,11 +124,25 @@ button.button-done{
     text-align: center;
 }
 
-span.done-activity{
+p.done-activity{
     text-decoration-line: line-through;
+    
+}
+p{
+    word-wrap: break-word;
+    font-size: 20px;
+}
+
+a.link{
+    color: black;
+    font-weight: bold;
+    font-size: 18px;
 }
 
 @media only screen and (max-width: 600px) {
+    .content{
+        width: 100%;
+    }
     .content .content-item .form{
         margin-bottom: 10px;
     }

@@ -23,7 +23,7 @@
         </div>
         <div class="content">
             <div class="greet">
-                <p>Hola👋, selamat berproduktivitas.</p>
+                <p>Hola👋, semoga hari anda produktif.</p>
             </div>
             <div class="content-item">
 
@@ -41,8 +41,12 @@
         </div>
         <div class="footer">
             <div class="footer-content">
-                <p>Created with ❤️ by <a href="">@akbarrahmatm</a></p>
-                <p>Pure Native, As Pure As My Love To You 💀.</p>
+                <p>Build with <strong>pure</strong> HTML, CSS and JS.</p>
+                <p>As <strong>pure</strong> as my love to you 💀.</p>
+                <p><a target="_blank" class="link" href="https://akbarrahmatm.my.id">@akbarrahmatm</a> // <a
+                        target="_blank" class="link"
+                        href="https://github.com/akbarrahmatm/backtonative-js-todoapp">Source
+                        Code</a></p>
             </div>
         </div>
     </div>
@@ -57,7 +61,7 @@
         if (data.length > 0) {
             getActivity()
         } else {
-            let span = document.createElement("span")
+            let span = document.createElement("p")
             text = document.createTextNode('Belum ada aktivitas')
             span.appendChild(text)
 
@@ -81,7 +85,8 @@
             for (i = 0; i < data.length; i++) {
                 let li = document.createElement("li");
                 let div = document.createElement("div")
-                let span = document.createElement("span")
+                let span = document.createElement("p")
+
 
                 div.className = "inline-block"
                 li.className = "list-item"
